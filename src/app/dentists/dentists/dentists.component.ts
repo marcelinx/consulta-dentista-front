@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Dentista } from '../model/dentista';
+import { DentistService } from '../services/dentist.service';
 
 @Component({
   selector: 'app-dentists',
@@ -8,16 +9,12 @@ import { Dentista } from '../model/dentista';
 })
 export class DentistsComponent {
 
-  dentista: Dentista[] = [
-    {
-      _id: '1',
-      name: 'João Marcelino',
-      specialty: 'Ortodontia',
-    },
-  ];
+  dentista: Dentista[] = [];
   displayedColumns = ['name', 'category'];
 
-  constructor() {}
+  constructor(private dentistService: DentistService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dentista = this.dentistService.list();
+  }
 }

@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { DentistsRoutingModule } from './dentists-routing.module';
 import { DentistsComponent } from './dentists/dentists.component';
-
-
 
 @NgModule({
   declarations: [
@@ -14,8 +12,7 @@ import { DentistsComponent } from './dentists/dentists.component';
   imports: [
     CommonModule,
     DentistsRoutingModule,
-    MatTableModule
-
+    AppMaterialModule
   ]
 })
 export class DentistsModule { }
