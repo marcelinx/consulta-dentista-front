@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
 
 import { DentistsRoutingModule } from './dentists-routing.module';
 import { DentistsComponent } from './dentists/dentists.component';
+
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { DentistsComponent } from './dentists/dentists.component';
   ],
   imports: [
     CommonModule,
-    DentistsRoutingModule
+    DentistsRoutingModule,
+    MatTableModule
+
   ]
 })
 export class DentistsModule { }

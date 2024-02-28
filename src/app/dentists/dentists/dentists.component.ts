@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Dentista } from '../model/dentista';
 
 @Component({
   selector: 'app-dentists',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class DentistsComponent {
 
+  dentista: Dentista[] = [
+    {
+      _id: '1',
+      name: 'João Marcelino',
+      specialty: 'Ortodontia',
+    },
+  ];
+  displayedColumns = ['name', 'category'];
+
+  constructor() {}
+
+  ngOnInit(): void {}
 }
