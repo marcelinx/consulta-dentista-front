@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Dentista } from '../model/dentista';
 import { DentistService } from '../services/dentist.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dentists',
@@ -9,12 +10,14 @@ import { DentistService } from '../services/dentist.service';
 })
 export class DentistsComponent {
 
-  dentista: Dentista[] = [];
+  dentista: Observable<Dentista[]>;
   displayedColumns = ['name', 'category'];
 
-  constructor(private dentistService: DentistService) {}
+  constructor(private dentistService: DentistService) {
+    this.dentista = this.dentistService.list();
+  }
 
   ngOnInit(): void {
-    this.dentista = this.dentistService.list();
+
   }
 }
