@@ -1,0 +1,52 @@
+<mat-table [dataSource]="dentista">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Dentista</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">{{ dentista.name }}</mat-cell>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="specialty">
+    <mat-header-cell *matHeaderCellDef>Especialidade</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">
+      {{ dentista.specialty }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Adicionar um dentista"
+        (click)="onAdd()"
+        class="action-column-header"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let dentista" class="action-column">
+      <button
+        mat-icon-button
+        color="primary"
+        aria-label="Editar Dentista"
+        (click)="onEdit(dentista)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        color="warn"
+        aria-label="Remover Dentista"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
-import { Dentista } from '../model/dentista';
-import { DentistService } from '../services/dentist.service';
+import { Dentista } from '../../model/dentista';
+import { DentistService } from '../../services/dentist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DentistsComponent {
   dentistaData$: Observable<Dentista[]>;
-  displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private dentistService: DentistService,
@@ -24,22 +23,23 @@ export class DentistsComponent {
   ) {
     this.dentistaData$ = this.dentistService.list().pipe(
       catchError((error) => {
-        this.onError('Erro ao encontrar Colaboradores.')
+        this.onError('Ocorreu um erro ao carregar conteúdo');
         return of([]);
       })
     );
   }
 
-  onError(errorMessage: string) {
+  onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
-      data: errorMessage
+      data: errorMsg,
     });
   }
 
-  ngOnInit(): void {}
-
-
   onAdd() {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  onEdit(dentista: Dentista) {
+    this.router.navigate(['edit', dentista._id], { relativeTo: this.route });
   }
 }

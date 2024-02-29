@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { take } from 'rxjs';
 
 import { Dentista } from '../model/dentista';
-import { delay, first, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +14,13 @@ export class DentistService {
 
   list() {
     return this.httpClient.get<Dentista[]>(this.API).pipe(take(1));
+  }
+
+  loadById(id: string) {
+    return this.httpClient.get<Dentista>(`${this.API}/${id}`);
+  }
+
+  saveDentist(record: Dentista) {
+    return this.httpClient.post<Dentista>(this.API, record);
   }
 }
