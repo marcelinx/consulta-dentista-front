@@ -11,6 +11,7 @@ export class DentistListComponent {
   @Input() dentista: Dentista[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['name', 'specialty', 'actions'];
 
@@ -22,5 +23,9 @@ export class DentistListComponent {
 
   onEdit(dentista: Dentista) {
     this.edit.emit(dentista);
+  }
+
+  onDelete(dentista: Dentista) {
+    this.remove.emit(dentista);
   }
 }
