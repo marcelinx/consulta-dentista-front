@@ -4,7 +4,8 @@
       <span>Relatório de Dentistas</span>
     </mat-toolbar>
 
-    <table mat-table [dataSource]="dentista" class="mat-elevation-z8">
+    <div *ngIf="dentistaData$ | async as dentistas; else loading">
+    <table mat-table [dataSource]="dentistaData$" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nome do Profissional</th>
@@ -20,5 +21,13 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    </div>
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+    </ng-template>
+
   </mat-card-content>
 </mat-card>

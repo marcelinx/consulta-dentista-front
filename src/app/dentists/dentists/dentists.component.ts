@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class DentistsComponent {
 
-  dentista: Observable<Dentista[]>;
+  dentistaData$: Observable<Dentista[]>;
   displayedColumns = ['name', 'category'];
 
   constructor(private dentistService: DentistService) {
-    this.dentista = this.dentistService.list();
+    this.dentistaData$ = this.dentistService.list();
   }
 
   ngOnInit(): void {
