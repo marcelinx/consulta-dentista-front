@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-toolbar color="primary">Detalhes do Dentista</mat-toolbar>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Nome do Profissional"
+          formControlName="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Especialidade</mat-label>
+        <mat-select formControlName="specialty">
+          <mat-option value="null"> </mat-option>
+          <mat-option value="Geral">Geral</mat-option>
+          <mat-option value="Ortodontia">Ortodontia</mat-option>
+          <mat-option value="Endodontia">Endodontia</mat-option>
+          <mat-option value="Periodontia">Periodontia</mat-option>
+          <mat-option value="ProteseDentaria">Prótese Dentária</mat-option>
+          <mat-option value="Implantodontia">Implantodontia</mat-option>
+          <mat-option value="Odontopediatria">Odontopediatria</mat-option>
+          <mat-option value="Dentistica">Dentística</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
