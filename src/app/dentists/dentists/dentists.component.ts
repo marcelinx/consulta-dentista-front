@@ -5,6 +5,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 
 import { Dentista } from '../model/dentista';
 import { DentistService } from '../services/dentist.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dentists',
@@ -13,11 +14,13 @@ import { DentistService } from '../services/dentist.service';
 })
 export class DentistsComponent {
   dentistaData$: Observable<Dentista[]>;
-  displayedColumns = ['name', 'category'];
+  displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private dentistService: DentistService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.dentistaData$ = this.dentistService.list().pipe(
       catchError((error) => {
@@ -34,4 +37,9 @@ export class DentistsComponent {
   }
 
   ngOnInit(): void {}
+
+
+  onAdd() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }
