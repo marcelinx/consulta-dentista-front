@@ -8,7 +8,7 @@ import { delay, first, take, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class DentistService {
-  private readonly API = '/assets/dentistas.json';
+  private readonly API = '/assets/dentistaas.json';
 
   constructor(private httpClient: HttpClient) {}
 

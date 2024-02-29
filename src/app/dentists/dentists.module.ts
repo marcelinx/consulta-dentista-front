@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { DentistsRoutingModule } from './dentists-routing.module';
 import { DentistsComponent } from './dentists/dentists.component';
 
@@ -12,7 +13,8 @@ import { DentistsComponent } from './dentists/dentists.component';
   imports: [
     CommonModule,
     DentistsRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class DentistsModule { }
