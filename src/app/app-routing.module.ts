@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DentistsComponent } from './features/dentists/containers/dentists/dentists.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dentist' },
@@ -12,6 +11,14 @@ const routes: Routes = [
         (m) => m.DentistsModule
       ),
   },
+  { path: '', pathMatch: 'full', redirectTo: 'client' },
+  {
+    path: 'clients',
+    loadChildren: () =>
+    import('./features/clients/clients.module').then(
+      (c) => c.ClientsModule
+    ),
+  }
 ];
 
 @NgModule({
