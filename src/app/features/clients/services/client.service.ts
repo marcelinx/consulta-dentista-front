@@ -12,7 +12,7 @@ export class ClienteService {
 
   constructor(private httpClient: HttpClient) {}
 
-  list() {
+  listClient() {
     return this.httpClient.get<Cliente[]>(this.API).pipe(take(1));
   }
 
@@ -20,7 +20,7 @@ export class ClienteService {
     return this.httpClient.get<Cliente>(`${this.API}/${id}`);
   }
 
-  saveDentist(record: Cliente) {
+  saveClient(record: Cliente) {
     console.log(record);
     if (record._id) {
       console.log('update');

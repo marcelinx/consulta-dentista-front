@@ -27,7 +27,7 @@ export class ClientComponent {
   }
 
   refresh() {
-    this.clientData$ = this.clienteService.list().pipe(
+    this.clientData$ = this.clienteService.listClient().pipe(
       catchError((error) => {
         this.onError('Ocorreu um erro ao carregar conteúdo');
         return of([]);

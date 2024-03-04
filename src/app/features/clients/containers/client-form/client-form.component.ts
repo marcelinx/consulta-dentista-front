@@ -29,16 +29,16 @@ export class ClientFormComponent {
   }
 
   ngOnInit(): void {
-    const dentista: Cliente = this.route.snapshot.data['dentista'];
+    const cliente: Cliente = this.route.snapshot.data['cliente'];
     this.form.setValue({
-      _id: dentista._id,
-      name: dentista.name,
-      email: dentista.email,
+      _id: cliente._id,
+      name: cliente.name,
+      email: cliente.email,
     });
   }
 
   onSubmit() {
-    this.service.saveDentist(this.form.value).subscribe(
+    this.service.saveClient(this.form.value).subscribe(
       (result) => this.onSuccess(),
       (error) => this.onError()
     );
