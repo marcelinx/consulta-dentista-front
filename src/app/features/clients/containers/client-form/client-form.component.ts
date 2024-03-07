@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ClienteService } from '../../services/client.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../../model/cliente';
+import { nameValidator } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-client-form',
@@ -23,8 +24,8 @@ export class ClientFormComponent {
   ) {
     this.form = this.formBuilder.group({
       _id: [''],
-      name: [''],
-      email: [''],
+      name: ['', [Validators.required, nameValidator()]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 

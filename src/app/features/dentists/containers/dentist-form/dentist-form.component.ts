@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { DentistService } from '../../services/dentist.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Dentista } from '../../model/dentista';
+import { nameValidator } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-dentist-form',
@@ -23,8 +24,8 @@ export class DentistFormComponent {
   ) {
     this.form = this.formBuilder.group({
       _id: [''],
-      name: [''],
-      specialty: [''],
+      name: ['', [Validators.required, nameValidator()]],
+      specialty: ['', Validators.required]
     });
   }
 
