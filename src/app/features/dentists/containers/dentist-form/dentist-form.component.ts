@@ -39,11 +39,18 @@ export class DentistFormComponent {
   }
 
   onSubmit() {
-    this.service.saveDentist(this.form.value).subscribe(
-      (result) => this.onSuccess(),
-      (error) => this.onError()
-    );
+    if (this.form.valid) {
+      this.service.saveDentist(this.form.value).subscribe(
+        (result) => this.onSuccess(),
+        (error) => this.onError()
+      );
+    } else {
+      this.snackBar.open('Por favor, corrija os erros antes de enviar.', '', {
+        duration: 5000,
+      });
+    }
   }
+
 
   onCancel() {
     this.location.back();
