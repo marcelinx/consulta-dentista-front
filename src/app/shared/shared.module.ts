@@ -12,7 +12,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
   ],
   imports: [
     CommonModule,
-    AppMaterialModule
+    AppMaterialModule,
   ],
   exports: [
     ErrorDialogComponent

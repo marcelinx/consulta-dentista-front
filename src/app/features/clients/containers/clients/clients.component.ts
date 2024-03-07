@@ -65,4 +65,7 @@ export class ClientComponent {
       (error) => this.onError('Erro ao tentar excluir cliente!')
     );
   }
+  onViewGraph() {
+    this.router.navigate(['data'], { relativeTo: this.route });
+  }
 }

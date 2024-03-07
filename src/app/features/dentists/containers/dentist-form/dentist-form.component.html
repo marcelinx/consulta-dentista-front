@@ -9,6 +9,12 @@
           placeholder="Nome do Profissional"
           formControlName="name"
         />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">
+          Nome do Cliente é obrigatório.
+        </mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('invalidName')">
+          Nome inválido. Apenas letras e espaços são permitidos.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -23,13 +29,13 @@
           <mat-option value="Implantodontia">Implantodontia</mat-option>
           <mat-option value="Odontopediatria">Odontopediatria</mat-option>
           <mat-option value="Dentistica">Dentística</mat-option>
-      </mat-select>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onSubmit()">
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">
       Salvar
     </button>
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
