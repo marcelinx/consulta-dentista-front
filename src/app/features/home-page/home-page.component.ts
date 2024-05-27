@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginDialogService } from '../login/login-dialog.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomePageComponent {
 
+  constructor(private loginDialogService: LoginDialogService) {}
+
+  openLogin() {
+    this.loginDialogService.openLoginDialog();
+  }
 }

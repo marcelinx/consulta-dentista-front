@@ -1,16 +1,38 @@
 <mat-table [dataSource]="cliente">
   <!-- Name Column -->
-  <ng-container matColumnDef="name">
+  <ng-container matColumnDef="nome">
     <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
-    <mat-cell *matCellDef="let cliente">{{ cliente.name }}</mat-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.nome }}</mat-cell>
   </ng-container>
 
-  <!-- Category Column -->
+  <!-- Email Column -->
   <ng-container matColumnDef="email">
     <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-    <mat-cell *matCellDef="let cliente">
-      {{ cliente.email }}
-    </mat-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.email }}</mat-cell>
+  </ng-container>
+
+  <!-- Telefone Column -->
+  <ng-container matColumnDef="telefone">
+    <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.telefone }}</mat-cell>
+  </ng-container>
+
+  <!-- Data de Nascimento Column -->
+  <ng-container matColumnDef="dataNascimento">
+    <mat-header-cell *matHeaderCellDef>Data de Nascimento</mat-header-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.dataNascimento }}</mat-cell>
+  </ng-container>
+
+  <!-- Sexo Column -->
+  <ng-container matColumnDef="sexo">
+    <mat-header-cell *matHeaderCellDef>Sexo</mat-header-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.sexo }}</mat-cell>
+  </ng-container>
+
+  <!-- Endereço Column -->
+  <ng-container matColumnDef="endereco">
+    <mat-header-cell *matHeaderCellDef>Endereço</mat-header-cell>
+    <mat-cell *matCellDef="let cliente">{{ cliente.endereco }}</mat-cell>
   </ng-container>
 
   <!-- Actions Column -->

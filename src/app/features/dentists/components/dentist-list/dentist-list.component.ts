@@ -8,17 +8,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dentist-list.component.scss'],
 })
 export class DentistListComponent {
-  @Input() dentista: Dentista[] = [];
-  @Output() add = new EventEmitter(false);
-  @Output() edit = new EventEmitter(false);
-  @Output() remove = new EventEmitter(false);
+  @Input() dentistas: Dentista[] = [];
+  @Output() add = new EventEmitter<void>();
+  @Output() edit = new EventEmitter<Dentista>();
+  @Output() remove = new EventEmitter<Dentista>();
 
-  readonly displayedColumns = ['name', 'specialty', 'actions'];
+  readonly displayedColumns = ['name', 'category', 'cro', 'endereco', 'telefone', 'actions'];
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   onAdd() {
-    this.add.emit(true);
+    this.add.emit();
   }
 
   onEdit(dentista: Dentista) {

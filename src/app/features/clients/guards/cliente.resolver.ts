@@ -18,6 +18,14 @@ export class ClienteResolver {
     if (route.params && route.params['id']) {
       return this.service.loadById(route.params['id']);
     }
-    return of({ _id: '', name: '', email: '' });
+    return of({
+      id: '',
+      nome: '',
+      email: '',
+      telefone: '',
+      dataNascimento: '',
+      sexo: '',
+      endereco: '',
+    });
   }
 }

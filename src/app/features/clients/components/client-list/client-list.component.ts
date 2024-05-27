@@ -9,11 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ClientListComponent {
   @Input() cliente: Cliente[] = [];
-  @Output() add = new EventEmitter(false);
-  @Output() edit = new EventEmitter(false);
-  @Output() remove = new EventEmitter(false);
+  @Output() add = new EventEmitter<boolean>();
+  @Output() edit = new EventEmitter<Cliente>();
+  @Output() remove = new EventEmitter<Cliente>();
 
-  readonly displayedColumns = ['name', 'email', 'actions'];
+  readonly displayedColumns = ['nome', 'email', 'telefone', 'dataNascimento', 'sexo', 'endereco', 'actions'];
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 

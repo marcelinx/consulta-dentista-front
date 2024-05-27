@@ -48,19 +48,19 @@ export class DentistsComponent {
   }
 
   onEdit(dentist: Dentista) {
-    this.router.navigate(['edit', dentist._id], { relativeTo: this.route });
+    this.router.navigate(['edit', dentist.id], { relativeTo: this.route });
   }
 
   onDelete(dentist: Dentista) {
-    this.dentistaService.remove(dentist._id).subscribe(() => {
+    this.dentistaService.remove(dentist.id).subscribe(() => {
       this.refresh();
-      this.snackBar.open('Curso excluído com sucesso', 'X', {
+      this.snackBar.open('Dentista excluído com sucesso', 'X', {
         duration: 5000,
         verticalPosition: 'top',
         horizontalPosition: 'center',
       });
     },
-    error => this.onError('Erro ao tentar excluir curso!')
+    error => this.onError('Profissional já atrelado a uma consulta. Altere ou tente mais tarde')
     );
   }
 }

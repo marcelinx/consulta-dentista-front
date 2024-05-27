@@ -1,4 +1,4 @@
-<mat-table [dataSource]="dentista">
+<mat-table [dataSource]="dentistas">
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>Dentista</mat-header-cell>
@@ -6,43 +6,43 @@
   </ng-container>
 
   <!-- Category Column -->
-  <ng-container matColumnDef="specialty">
-    <mat-header-cell *matHeaderCellDef>Especialidade</mat-header-cell>
-    <mat-cell *matCellDef="let dentista">
-      {{ dentista.specialty }}
-    </mat-cell>
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">{{ dentista.category }}</mat-cell>
+  </ng-container>
+
+  <!-- CRO Column -->
+  <ng-container matColumnDef="cro">
+    <mat-header-cell *matHeaderCellDef>CRO</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">{{ dentista.cro }}</mat-cell>
+  </ng-container>
+
+  <!-- Endereço Column -->
+  <ng-container matColumnDef="endereco">
+    <mat-header-cell *matHeaderCellDef>Endereço</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">{{ dentista.endereco }}</mat-cell>
+  </ng-container>
+
+  <!-- Telefone Column -->
+  <ng-container matColumnDef="telefone">
+    <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+    <mat-cell *matCellDef="let dentista">{{ dentista.telefone }}</mat-cell>
   </ng-container>
 
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef class="action-column">
-      <button
-        mat-mini-fab
-        color="primary"
-        aria-label="Adicionar um dentista"
-        (click)="onAdd()"
-        class="action-column-header"
-      >
+      <button mat-mini-fab color="primary" aria-label="Adicionar um dentista" (click)="onAdd()" class="action-column-header">
         <mat-icon>add</mat-icon>
       </button>
     </mat-header-cell>
 
     <mat-cell *matCellDef="let dentista" class="action-column">
-      <button
-        mat-icon-button
-        color="primary"
-        aria-label="Editar Dentista"
-        (click)="onEdit(dentista)"
-      >
+      <button mat-icon-button color="primary" aria-label="Editar Dentista" (click)="onEdit(dentista)">
         <mat-icon>edit</mat-icon>
       </button>
 
-      <button
-        mat-icon-button
-        color="warn"
-        aria-label="Remover Dentista"
-        (click)="onDelete(dentista)"
-      >
+      <button mat-icon-button color="warn" aria-label="Remover Dentista" (click)="onDelete(dentista)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>

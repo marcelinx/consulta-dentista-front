@@ -2,7 +2,7 @@
   <div class="hero-content">
     <h1>Bem-vindo ao Dent&Vida</h1>
     <p>O cuidado que seu sorriso merece.</p>
-    <button class="cta-button">Agende uma Consulta</button>
+    <button class="cta-button" (click)="openLogin()">Agende uma Consulta</button>
   </div>
 </div>
 
@@ -19,16 +19,42 @@
   <div class="services-container">
     <div class="service-item">
       <i class="fas fa-tooth"></i>
-      <p>Limpeza Dental</p>
+      <h3>Limpeza Dental</h3>
+      <p>Remoção de tártaro e placa bacteriana para manter a saúde bucal.</p>
     </div>
     <div class="service-item">
       <i class="fas fa-smile-beam"></i>
-      <p>Clareamento Dental</p>
+      <h3>Clareamento Dental</h3>
+      <p>Procedimento para clarear os dentes, deixando o sorriso mais brilhante.</p>
     </div>
     <div class="service-item">
       <i class="fas fa-teeth"></i>
-      <p>Implantes</p>
+      <h3>Implantes</h3>
+      <p>Substituição de dentes ausentes por implantes dentários seguros e duradouros.</p>
     </div>
+    <!-- Adicione mais serviços aqui -->
+  </div>
+</section>
+
+<section class="additional-info">
+  <h2>Informações Adicionais</h2>
+  <div class="info-container">
+    <div class="info-item">
+      <h3>Horário de Funcionamento</h3>
+      <p>Segunda a sexta: 8h00 - 18h00</p>
+      <p>Sábado: 9h00 - 12h00</p>
+    </div>
+    <div class="info-item">
+      <h3>Localização</h3>
+      <p>Rua Principal, 123 - Centro</p>
+      <p>Cidade, Estado - CEP: 12345-678</p>
+    </div>
+    <div class="info-item">
+      <h3>Contato</h3>
+      <p>(00) 1234-5678</p>
+      <p>contato@dentevida.com</p>
+    </div>
+    <!-- Adicione mais informações aqui -->
   </div>
 </section>
 
