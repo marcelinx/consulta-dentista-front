@@ -37,7 +37,7 @@ body {
     .cta-button {
       font-size: 1.1rem;
       padding: 15px 30px;
-      background-color: #007bff;
+      background-color: $dark-primary-color;
       color: white;
       border: none;
       border-radius: 5px;
@@ -45,7 +45,7 @@ body {
       transition: background-color 0.3s, transform 0.2s;
 
       &:hover {
-        background-color: darken(#007bff, 10%);
+        background-color: darken($dark-primary-color, 40%);
         transform: scale(1.05);
       }
 
