@@ -22,7 +22,7 @@ export class ClienteService {
 
   saveClient(record: Cliente) {
     console.log(record);
-    if (record._id) {
+    if (record.id) {
       console.log('update');
       return this.update(record);
     }
@@ -40,7 +40,7 @@ export class ClienteService {
 
   private update(record: Partial<Cliente>) {
     return this.httpClient
-      .put<Cliente>(`${this.API}/${record._id}`, record)
+      .put<Cliente>(`${this.API}/${record.id}`, record)
       .pipe(first());
   }
 }

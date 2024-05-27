@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DentistService } from '../../services/dentist.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -12,30 +12,29 @@ import { nameValidator } from 'src/app/utils/validators';
   templateUrl: './dentist-form.component.html',
   styleUrls: ['./dentist-form.component.scss'],
 })
-export class DentistFormComponent {
+export class DentistFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private formBuilder: NonNullableFormBuilder,
+    private formBuilder: FormBuilder,
     private service: DentistService,
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
-      _id: [''],
+      id: [''],
       name: ['', [Validators.required, nameValidator()]],
-      specialty: ['', Validators.required]
+      category: ['', Validators.required],
+      cro: [''],
+      endereco: [''],
+      telefone: ['']
     });
   }
 
   ngOnInit(): void {
     const dentista: Dentista = this.route.snapshot.data['dentista'];
-    this.form.setValue({
-      _id: dentista._id,
-      name: dentista.name,
-      specialty: dentista.specialty,
-    });
+    this.form.patchValue(dentista);
   }
 
   onSubmit() {
@@ -50,7 +49,6 @@ export class DentistFormComponent {
       });
     }
   }
-
 
   onCancel() {
     this.location.back();

@@ -1,5 +1,8 @@
 export interface Dentista {
-  _id: string;
+  id: string;
   name: string;
-  specialty: string;
+  category: string;
+  cro: string;
+  endereco: string;
+  telefone: string;
 }

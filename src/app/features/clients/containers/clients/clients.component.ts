@@ -49,11 +49,11 @@ export class ClientComponent {
   }
 
   onEdit(cliente: Cliente) {
-    this.router.navigate(['edit', cliente._id], { relativeTo: this.route });
+    this.router.navigate(['edit', cliente.id], { relativeTo: this.route });
   }
 
   onDelete(cliente: Cliente) {
-    this.clienteService.remove(cliente._id).subscribe(
+    this.clienteService.remove(cliente.id).subscribe(
       () => {
         this.refresh();
         this.snackBar.open('Cliente excluído com sucesso', 'X', {

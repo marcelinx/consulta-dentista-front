@@ -4,22 +4,14 @@
   <mat-card-content>
     <form [formGroup]="form">
       <mat-form-field class="full-width">
-        <input
-          matInput
-          placeholder="Nome do Profissional"
-          formControlName="name"
-        />
-        <mat-error *ngIf="form.get('name')?.hasError('required')">
-          Nome do Cliente é obrigatório.
-        </mat-error>
-        <mat-error *ngIf="form.get('name')?.hasError('invalidName')">
-          Nome inválido. Apenas letras e espaços são permitidos.
-        </mat-error>
+        <input matInput placeholder="Nome do Profissional" formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">Nome do Profissional é obrigatório.</mat-error>
+        <mat-error *ngIf="form.get('name')?.hasError('invalidName')">Nome inválido. Apenas letras e espaços são permitidos.</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <mat-label>Especialidade</mat-label>
-        <mat-select formControlName="specialty">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="category">
           <mat-option value="null"> </mat-option>
           <mat-option value="Geral">Geral</mat-option>
           <mat-option value="Ortodontia">Ortodontia</mat-option>
@@ -31,13 +23,23 @@
           <mat-option value="Dentistica">Dentística</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="CRO" formControlName="cro" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Endereço" formControlName="endereco" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Telefone" formControlName="telefone" />
+      </mat-form-field>
     </form>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">
-      Salvar
-    </button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">Salvar</button>
     <button mat-raised-button (click)="onCancel()">Cancelar</button>
   </mat-card-actions>
 </mat-card>

@@ -18,6 +18,6 @@ export class DentistaResolver {
     if (route.params && route.params['id']) {
       return this.service.loadById(route.params['id']);
     }
-    return of({ _id: '', name: '', specialty: ''});
+    return of({ id: '', name: '', category: '', cro: '', endereco: '', telefone: '' });
   }
 }

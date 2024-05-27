@@ -5,7 +5,6 @@ import { ClienteService } from '../../services/client.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../../model/cliente';
-import { nameValidator } from 'src/app/utils/validators';
 
 @Component({
   selector: 'app-client-form',
@@ -23,19 +22,29 @@ export class ClientFormComponent {
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
-      _id: [''],
-      name: ['', [Validators.required, nameValidator()]],
-      email: ['', [Validators.required, Validators.email]],
+      id: [''],
+      nome: ['', [Validators.required ]],
+      email: ['', [Validators.required ]],
+      dataNascimento: ['', [Validators.required ]],
+      telefone: ['', [Validators.required]],
+      sexo: [''],
+      endereco: ['']
     });
   }
 
   ngOnInit(): void {
     const cliente: Cliente = this.route.snapshot.data['cliente'];
-    this.form.setValue({
-      _id: cliente._id,
-      name: cliente.name,
-      email: cliente.email,
-    });
+    if (cliente) {
+      this.form.setValue({
+        id: cliente.id,
+        nome: cliente.nome,
+        email: cliente.email,
+        telefone: cliente.telefone,
+        dataNascimento: cliente.dataNascimento,
+        sexo: cliente.sexo,
+        endereco: cliente.endereco,
+      });
+    }
   }
 
   onSubmit() {
@@ -63,7 +72,7 @@ export class ClientFormComponent {
   }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar cliente!', '', {
+    this.snackBar.open('Cliente atrelado a uma consulta. Não é possivel apagar.', '', {
       duration: 5000,
     });
   }

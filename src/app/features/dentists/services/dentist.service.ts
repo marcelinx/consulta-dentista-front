@@ -22,7 +22,7 @@ export class DentistService {
 
   saveDentist(record: Dentista) {
     console.log(record);
-    if (record._id) {
+    if (record.id) {
       console.log('update');
       return this.update(record);
     }
@@ -42,7 +42,7 @@ export class DentistService {
 
   private update(record: Partial<Dentista>) {
     return this.httpClient
-      .put<Dentista>(`${this.API}/${record._id}`, record)
+      .put<Dentista>(`${this.API}/${record.id}`, record)
       .pipe(first());
   }
 }
