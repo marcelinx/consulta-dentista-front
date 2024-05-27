@@ -1,0 +1,37 @@
+<div>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Agenda">
+</div>
+
+<table mat-table [dataSource]="agendas">
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let agenda">{{ agenda.date }}</td>
+  </ng-container>
+
+  <!-- Dentista Column -->
+  <ng-container matColumnDef="dentista">
+    <th mat-header-cell *matHeaderCellDef>Dentista</th>
+    <td mat-cell *matCellDef="let agenda">{{ agenda.dentista.name }}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-mini-fab color="primary" aria-label="Adicionar uma consulta" (click)="onAdd()" class="action-column-header">
+        <mat-icon>add</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let agenda" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Editar Agenda" (click)="onEdit(agenda)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Remover Agenda" (click)="onDelete(agenda)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

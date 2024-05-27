@@ -5,24 +5,42 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full' },
-  { path: 'dentist', pathMatch: 'full', redirectTo: 'dentists' },
+
+  { path: 'dentist', redirectTo: 'dentists' },
   {
     path: 'dentists',
     loadChildren: () =>
       import('./features/dentists/dentists.module').then(
         (m) => m.DentistsModule
       ),
-    canActivate: [AuthGuard] // Protegendo a rota 'dentists' com o AuthGuard
+    canActivate: [AuthGuard],
   },
-  { path: 'client', pathMatch: 'full', redirectTo: 'clients' },
+  { path: 'client', redirectTo: 'clients' },
   {
     path: 'clients',
     loadChildren: () =>
       import('./features/clients/clients.module').then((c) => c.ClientsModule),
-    canActivate: [AuthGuard] // Protegendo a rota 'clients' com o AuthGuard
+    canActivate: [AuthGuard],
   },
-  { path: 'login', loadChildren: () => import('./features/login/login.module').then((m) => m.LoginModule) },
-  { path: '**', redirectTo: '' } // Redirecionando para a página inicial em caso de rota desconhecida
+  { path: 'consultas', redirectTo: 'consultas' },
+  {
+    path: 'consultas',
+    loadChildren: () =>
+      import('./features/consulta/consulta.module').then((c) => c.ConsultaModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'agendas',
+    loadChildren: () =>
+    import('./features/agenda/agenda.module').then((a) => a.AgendaModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./features/login/login.module').then((m) => m.LoginModule),
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

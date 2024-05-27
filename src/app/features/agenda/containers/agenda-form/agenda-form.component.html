@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-toolbar color="primary">Detalhes da Agenda</mat-toolbar>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Data (YYYY-MM-DD)" formControlName="date" />
+        <mat-error *ngIf="form.get('date')?.hasError('required')">Data é obrigatória.</mat-error>
+        <mat-error *ngIf="form.get('date')?.hasError('pattern')">Data deve estar no formato YYYY-MM-DD.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="cliente" [compareWith]="compareCliente">
+          <mat-option value=""> </mat-option>
+          <mat-option *ngFor="let cliente of clientes" [value]="cliente">{{ cliente.nome }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('cliente')?.hasError('required')">Cliente é obrigatório.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Dentista</mat-label>
+        <mat-select formControlName="dentista" [compareWith]="compareDentista">
+          <mat-option value=""> </mat-option>
+          <mat-option *ngFor="let dentista of dentistas" [value]="dentista">{{ dentista.nome }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('dentista')?.hasError('required')">Dentista é obrigatório.</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

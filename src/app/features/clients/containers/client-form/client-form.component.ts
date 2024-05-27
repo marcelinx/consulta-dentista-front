@@ -49,7 +49,14 @@ export class ClientFormComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.service.saveClient(this.form.value).subscribe(
+      // Formatar a data de nascimento
+      const dataNascimentoFormatada = this.formatarData(this.form.value.dataNascimento);
+
+      // Adicionar a data formatada ao objeto do formulário
+      const formData = { ...this.form.value, dataNascimentoFormatada };
+
+      // Enviar o formulário com a data formatada
+      this.service.saveClient(formData).subscribe(
         (result) => this.onSuccess(),
         (error) => this.onError()
       );
@@ -58,6 +65,13 @@ export class ClientFormComponent {
         duration: 5000,
       });
     }
+  }
+
+  // Função para formatar a data no formato desejado (por exemplo, 'DD/MM/AAAA')
+  private formatarData(data: string): string {
+    // Lógica para formatar a data aqui (exemplo simples para fins de demonstração)
+    const partesData = data.split('-');
+    return `${partesData[2]}/${partesData[1]}/${partesData[0]}`;
   }
 
   onCancel() {

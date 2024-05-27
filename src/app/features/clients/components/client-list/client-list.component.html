@@ -1,4 +1,8 @@
-<mat-table [dataSource]="cliente">
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Cliente">
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource">
   <!-- Name Column -->
   <ng-container matColumnDef="nome">
     <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>

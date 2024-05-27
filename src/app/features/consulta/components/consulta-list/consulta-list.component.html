@@ -1,0 +1,52 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Buscar">
+</mat-form-field>
+
+
+<mat-table [dataSource]="dataSource">
+  <!-- Hora Column -->
+  <ng-container matColumnDef="hora">
+    <mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+    <mat-cell *matCellDef="let consulta">{{ consulta.hora }}</mat-cell>
+  </ng-container>
+
+  <!-- Cliente Column -->
+  <ng-container matColumnDef="cliente">
+    <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
+    <mat-cell *matCellDef="let consulta">{{ consulta.cliente.nome }}</mat-cell>
+  </ng-container>
+
+  <!-- Dentista Column -->
+  <ng-container matColumnDef="dentista">
+    <mat-header-cell *matHeaderCellDef>Dentista</mat-header-cell>
+    <mat-cell *matCellDef="let consulta">{{ consulta.dentista.name }}</mat-cell>
+  </ng-container>
+
+  <!-- Data Column -->
+  <ng-container matColumnDef="data">
+    <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+    <mat-cell *matCellDef="let consulta">{{ consulta.agenda.date }}</mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-mini-fab color="primary" aria-label="Adicionar uma consulta" (click)="onAdd()" class="action-column-header">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let consulta" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Editar Consulta" (click)="onEdit(consulta)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Remover Consulta" (click)="onDelete(consulta)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

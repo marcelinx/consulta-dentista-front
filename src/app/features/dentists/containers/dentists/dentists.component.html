@@ -3,8 +3,13 @@
     <mat-toolbar color="primary">
       <span>Dentistas Disponiveis</span>
       <span class="toolbar-spacer"></span>
-      <button mat-button routerLink="/clients">Ver todos os Clientes</button>
     </mat-toolbar>
+
+    <div class="button-container">
+      <button mat-button routerLink="/clients">Ver todos os Clientes</button>
+      <button mat-button routerLink="/consultas">Ver todos as Consultas</button>
+      <button mat-button routerLink="/agendas">Ver todos as Agendas</button>
+    </div>
 
     <app-dentist-list
       *ngIf="dentistaData$ | async as dentista; else loading"

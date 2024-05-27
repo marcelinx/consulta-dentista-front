@@ -6,4 +6,5 @@ export interface Cliente {
   dataNascimento: string;
   sexo: string;
   endereco: string;
+  dataNascimentoFormatada: string;
 }

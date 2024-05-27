@@ -1,22 +1,23 @@
 <mat-card>
   <mat-card-content>
     <mat-toolbar color="primary">
-      <span>Cadastro de Clientes</span>
+      <span>Consultas Agendadas</span>
+      <span class="toolbar-spacer"></span>
     </mat-toolbar>
 
     <div class="button-container">
+      <button mat-button routerLink="/clients">Ver todos os Clientes</button>
       <button mat-button routerLink="/dentists">Ver todos os Dentistas</button>
-      <button mat-button routerLink="/consultas">Ver todos as Consultas</button>
       <button mat-button routerLink="/agendas">Ver todos as Agendas</button>
     </div>
 
-    <app-client-list
-      *ngIf="clientData$ | async as cliente; else loading"
-      [cliente]="cliente"
+    <app-consulta-list
+      *ngIf="consultaData$ | async as consulta; else loading"
+      [consultas]="consulta"
       (add)="onAdd()"
       (edit)="onEdit($event)"
       (remove)="onDelete($event)"
-    ></app-client-list>
+    ></app-consulta-list>
   </mat-card-content>
 
   <ng-template #loading>

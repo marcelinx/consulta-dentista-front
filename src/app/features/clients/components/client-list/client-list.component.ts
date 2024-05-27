@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cliente } from '../../model/cliente';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-client-list',
@@ -14,8 +15,15 @@ export class ClientListComponent {
   @Output() remove = new EventEmitter<Cliente>();
 
   readonly displayedColumns = ['nome', 'email', 'telefone', 'dataNascimento', 'sexo', 'endereco', 'actions'];
+  dataSource: MatTableDataSource<Cliente>;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.dataSource = new MatTableDataSource<Cliente>([]);
+  }
+
+  ngOnChanges() {
+    this.dataSource.data = this.cliente;
+  }
 
   onAdd() {
     this.add.emit(true);
@@ -27,5 +35,10 @@ export class ClientListComponent {
 
   onDelete(cliente: Cliente) {
     this.remove.emit(cliente);
+  }
+
+  applyFilter(event: any) {
+    const value = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = value;
   }
 }

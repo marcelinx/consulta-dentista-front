@@ -9,3 +9,14 @@ table {
   align-items: center;
   justify-content: center;
 }
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px; /* Ajuste conforme necessário */
+}
+
+.button-container button {
+  margin-bottom: 5px; /* Espaçamento entre os botões */
+}
+
