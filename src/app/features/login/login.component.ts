@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private dialogRef: MatDialogRef<LoginComponent>
+    private dialogRef: MatDialogRef<LoginComponent>,
+    private snackBar: MatSnackBar // Injete o MatSnackBar
   ) {}
 
   onSubmit() {
@@ -23,7 +25,13 @@ export class LoginComponent {
       this.dialogRef.close();
       this.router.navigate(['/dentists']);
     } else {
-      alert('Email ou senha inválidos.');
+      this.snackBar.open('Email ou senha inválidos.', 'Fechar', {
+        duration: 3000,
+      });
     }
+  }
+
+  onClose() {
+    this.dialogRef.close();
   }
 }

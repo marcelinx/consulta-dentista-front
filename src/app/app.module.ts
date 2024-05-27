@@ -29,7 +29,7 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
     FormsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
