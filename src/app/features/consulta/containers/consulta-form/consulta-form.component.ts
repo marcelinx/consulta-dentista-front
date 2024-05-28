@@ -61,37 +61,55 @@ export class ConsultaFormComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      const consultaData: Consulta = {
-        id: '',
-        hora: this.form.get('hora')?.value,
-        cliente: this.form.get('cliente')?.value,
-        dentista: this.form.get('dentista')?.value,
-        agenda: {
-          id: this.form.get('data')?.value.id,
-          date: this.form.get('data')?.value.date,
-          cliente: this.form.get('data')?.value.cliente,
-          dentista: this.form.get('data')?.value.dentista
-        }
-      };
+      const horaSelecionada = this.form.get('hora')?.value;
+      const horaInicio = '08:00';
+      const horaFim = '18:00';
 
-      this.consultaService.saveConsulta(consultaData).subscribe(
-        () => {
-          this.snackBar.open('Consulta agendada com sucesso!', '', {
-            duration: 5000,
-          });
-          this.form.reset();
-        },
-        (error: any) => {
-          this.snackBar.open('Erro ao agendar consulta. Por favor, tente novamente.', '', {
-            duration: 5000,
-          });
-        }
-      );
+      if (this.isHoraValida(horaSelecionada, horaInicio, horaFim)) {
+        const consultaData: Consulta = {
+          id: '',
+          hora: horaSelecionada,
+          cliente: this.form.get('cliente')?.value,
+          dentista: this.form.get('dentista')?.value,
+          agenda: {
+            id: this.form.get('data')?.value.id,
+            date: this.form.get('data')?.value.date,
+            cliente: this.form.get('data')?.value.cliente,
+            dentista: this.form.get('data')?.value.dentista
+          }
+        };
+
+        this.consultaService.saveConsulta(consultaData).subscribe(
+          () => {
+            this.snackBar.open('Consulta agendada com sucesso!', '', {
+              duration: 5000,
+            });
+            this.form.reset();
+          },
+          (error: any) => {
+            this.snackBar.open('Erro ao agendar consulta. Por favor, tente novamente.', '', {
+              duration: 5000,
+            });
+          }
+        );
+      } else {
+        this.snackBar.open('Por favor, selecione uma hora entre 08:00 e 18:00.', '', {
+          duration: 5000,
+        });
+      }
     } else {
       this.snackBar.open('Por favor, preencha todos os campos obrigatórios.', '', {
         duration: 5000,
       });
     }
+  }
+
+  isHoraValida(hora: string, inicio: string, fim: string): boolean {
+    const horaInicio = new Date('2000-01-01T' + inicio);
+    const horaFim = new Date('2000-01-01T' + fim);
+    const horaSelecionada = new Date('2000-01-01T' + hora);
+
+    return horaSelecionada >= horaInicio && horaSelecionada <= horaFim;
   }
 
   carregarDatasDisponiveis() {

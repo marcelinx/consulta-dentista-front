@@ -44,6 +44,16 @@
       <button mat-icon-button color="warn" aria-label="Remover Consulta" (click)="onDelete(consulta)">
         <mat-icon>delete</mat-icon>
       </button>
+
+      <button
+      mat-icon-button
+      color="accent"
+      aria-label="Historico da Consulta"
+      (click)="openHistoryModal(consulta)"
+    >
+      <mat-icon>history</mat-icon>
+    </button>
+
     </mat-cell>
   </ng-container>
 

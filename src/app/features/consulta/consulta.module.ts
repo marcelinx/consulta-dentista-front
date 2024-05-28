@@ -8,10 +8,11 @@ import { ConsultaListComponent } from './components/consulta-list/consulta-list.
 import { ConsultaRoutingModule } from './consulta-routing.module';
 import { ConsultaFormComponent } from './containers/consulta-form/consulta-form.component';
 import { ConsultaComponent } from './containers/consulta/consulta.component';
+import { ConsultaHistoryModalComponent } from './components/consulta-history-modal/consulta-history-modal.component';
 
 
 @NgModule({
-  declarations: [ConsultaComponent, ConsultaFormComponent, ConsultaListComponent],
+  declarations: [ConsultaComponent, ConsultaFormComponent, ConsultaListComponent, ConsultaHistoryModalComponent],
   imports: [
     CommonModule,
     ConsultaRoutingModule,

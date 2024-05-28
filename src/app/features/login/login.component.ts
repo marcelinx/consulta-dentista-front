@@ -17,13 +17,13 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router,
     private dialogRef: MatDialogRef<LoginComponent>,
-    private snackBar: MatSnackBar // Injete o MatSnackBar
+    private snackBar: MatSnackBar
   ) {}
 
   onSubmit() {
     if (this.authService.login(this.email, this.password)) {
       this.dialogRef.close();
-      this.router.navigate(['/dentists']);
+      this.router.navigate(['/consultas']);
     } else {
       this.snackBar.open('Email ou senha inválidos.', 'Fechar', {
         duration: 3000,

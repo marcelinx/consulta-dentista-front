@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ConsultaHistoryModalComponent } from '../consulta-history-modal/consulta-history-modal.component';
 import { Consulta } from '../../model/consulta';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -16,7 +18,7 @@ export class ConsultaListComponent {
   readonly displayedColumns = ['hora', 'cliente', 'dentista', 'data', 'actions'];
   dataSource: MatTableDataSource<Consulta>;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<Consulta>([]);
   }
 
@@ -34,6 +36,13 @@ export class ConsultaListComponent {
 
   onDelete(consulta: Consulta) {
     this.remove.emit(consulta);
+  }
+
+  openHistoryModal(consulta: Consulta): void {
+    this.dialog.open(ConsultaHistoryModalComponent, {
+      width: '400px',
+      data: consulta,
+    });
   }
 
   applyFilter(event: any) {

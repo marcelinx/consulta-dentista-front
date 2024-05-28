@@ -1,0 +1,10 @@
+<mat-dialog-content>
+  <p><strong>Horário da Consulta:</strong> {{ consulta.hora }}</p>
+  <p><strong>Paciente:</strong> {{ consulta.cliente.nome }}</p>
+  <p><strong>Procedimento realizado:</strong> {{ consulta.dentista.category }}</p>
+  <p *ngFor="let consulta"><strong>Dentista:</strong> {{ consulta.dentista.nome }}</p>
+  <p><strong>Endereço:</strong> {{ consulta.dentista.endereco }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Fechar</button>
+</mat-dialog-actions>
